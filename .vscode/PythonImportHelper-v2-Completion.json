@@ -1,0 +1,37 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "read_root",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def read_root():\n    return {\"message\": \"Hello from FastAPI with Docker and Jenkins!\"}\n@app.get(\"/health\")\ndef health():\n    return {\"status\": \"ok\"}",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "health",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def health():\n    return {\"status\": \"ok\"}",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\ndef read_root():\n    return {\"message\": \"Hello from FastAPI with Docker and Jenkins!\"}\n@app.get(\"/health\")\ndef health():\n    return {\"status\": \"ok\"}",
+        "detail": "app.main",
+        "documentation": {}
+    }
+]
