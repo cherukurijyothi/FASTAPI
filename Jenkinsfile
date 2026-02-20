@@ -13,6 +13,14 @@ pipeline {
             }
         }
 
+        stage('SonarQube Scan') {
+            steps {
+                withSonarQubeEnv('sonar-testing') {
+                    sh 'sonar-scanner'
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME .'
@@ -22,8 +30,8 @@ pipeline {
         stage('Stop Old Container') {
             steps {
                 sh '''
-                docker stop $CONTAINER_NAME || true
-                docker rm $CONTAINER_NAME || true
+                  docker stop $CONTAINER_NAME || true
+                  docker rm $CONTAINER_NAME || true
                 '''
             }
         }
@@ -31,7 +39,7 @@ pipeline {
         stage('Run New Container') {
             steps {
                 sh '''
-                docker run -d \
+                  docker run -d \
                     --name $CONTAINER_NAME \
                     -p 8000:8000 \
                     $IMAGE_NAME
