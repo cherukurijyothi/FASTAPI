@@ -13,13 +13,19 @@ pipeline {
             }
         }
 
-        stage('SonarQube Scan') {
+       
+ stage('SonarQube Scan') {
             steps {
-                withSonarQubeEnv('sonar-testing') {
-                    sh 'sonar-scanner'
+                script {
+                    // This requires SonarQube Scanner configured in Jenkins tools
+                    def scannerHome = tool 'sonar-scanner'
+                    withSonarQubeEnv('sonar-testing') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
             }
         }
+
 
         stage('Build Docker Image') {
             steps {
